@@ -21,9 +21,9 @@ export class TaskNodeView implements IView {
             >
             </rect>
             {selected ? <g >
-                <rect class={{ 'task-handler': true }} width={5} height={5} x={0} y={0}></rect>
-                <rect class={{ 'task-handler': true }} width={5} height={5} x={0} y={node.size.height}></rect>
-                <rect class={{ 'task-handler': true }} width={5} height={5} x={node.size.width} y={0} ></rect>
+                <rect class={{ 'task-handler': true }} width={5} height={5} x={-5} y={-5}></rect>
+                <rect class={{ 'task-handler': true }} width={5} height={5} x={-5} y={node.size.height}></rect>
+                <rect class={{ 'task-handler': true }} width={5} height={5} x={node.size.width} y={-5} ></rect>
                 <rect class={{ 'task-handler': true }} width={5} height={5} x={node.size.width} y={node.size.height}></rect>
             </g> : null}
             <text x={node.size.width / 2} y={node.size.height / 2 + 5}>{node.name}</text>
