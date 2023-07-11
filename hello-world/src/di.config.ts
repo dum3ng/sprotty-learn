@@ -16,6 +16,7 @@ import {
 } from 'sprotty'
 import { TaskNodeView } from './views'
 import { MouseListenerA, MouseListenerB } from './mouse-listener'
+import { ContextMenuCreateProvider } from './context-menu'
 
 export default (containerId: string) => {
     const ASCETExamleModule = new ContainerModule(
@@ -40,6 +41,8 @@ export default (containerId: string) => {
 
             bind(TYPES.MouseListener).to(MouseListenerA).inSingletonScope()
             bind(TYPES.MouseListener).to(MouseListenerB).inSingletonScope()
+            bind(TYPES.IContextMenuItemProvider).to(ContextMenuCreateProvider)
+            bind(TYPES.IContextMenuService)
         },
     )
 

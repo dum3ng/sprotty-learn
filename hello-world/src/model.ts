@@ -1,7 +1,13 @@
-import { SNode } from "sprotty-protocol"
+import { SNode } from 'sprotty-protocol'
 
 export interface TaskNode extends SNode {
-    name: string;
-    isRunning: boolean;
-    isFinished: boolean;
+    name: string
+    isRunning: boolean
+    isFinished: boolean
 }
+
+// export class TaskNode extends SNode {
+//     name: string;
+//     isRunning: boolean;
+//     isFinished: boolean;
+// }
