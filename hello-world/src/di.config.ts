@@ -16,7 +16,10 @@ import {
 } from 'sprotty'
 import { TaskNodeView } from './views'
 import { MouseListenerA, MouseListenerB } from './mouse-listener'
-import { ContextMenuCreateProvider } from './context-menu'
+import {
+    ContextMenuCreateProvider,
+    LearnContextMenuService,
+} from './context-menu'
 
 export default (containerId: string) => {
     const ASCETExamleModule = new ContainerModule(
@@ -24,6 +27,12 @@ export default (containerId: string) => {
             bind(TYPES.ModelSource).to(LocalModelSource).inSingletonScope()
             rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
             rebind(TYPES.LogLevel).toConstantValue(LogLevel.log)
+
+            bind(TYPES.MouseListener).to(MouseListenerA).inSingletonScope()
+            bind(TYPES.MouseListener).to(MouseListenerB).inSingletonScope()
+            bind(TYPES.IContextMenuService).to(LearnContextMenuService)
+            bind(TYPES.IContextMenuItemProvider).to(ContextMenuCreateProvider)
+
             const context = { bind, unbind, isBound, rebind }
             configureModelElement(context, 'graph', SGraph, SGraphView)
             configureModelElement(
@@ -38,11 +47,6 @@ export default (containerId: string) => {
                 needsClientLayout: false,
                 baseDiv: containerId,
             })
-
-            bind(TYPES.MouseListener).to(MouseListenerA).inSingletonScope()
-            bind(TYPES.MouseListener).to(MouseListenerB).inSingletonScope()
-            bind(TYPES.IContextMenuItemProvider).to(ContextMenuCreateProvider)
-            bind(TYPES.IContextMenuService)
         },
     )
 
